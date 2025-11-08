@@ -1,6 +1,6 @@
 module.exports = function(eleventyConfig) {
   // 静的ファイルのコピー
-  eleventyConfig.addPassthroughCopy("sample");
+  eleventyConfig.addPassthroughCopy({"sample": "sample"});
   
   // Showcaseファイルは別URLで保持
   eleventyConfig.addPassthroughCopy({
@@ -9,9 +9,9 @@ module.exports = function(eleventyConfig) {
   
   return {
     dir: {
-      input: ".",
+      input: "content",
       output: "_site",
-      includes: "_includes"
+      includes: "../_includes"
     },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",

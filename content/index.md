@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: layouts/base.njk
 title: 心理カウンセラー つばき｜あなたの心に寄り添います
 hero:
   greeting: はじめまして、私は
