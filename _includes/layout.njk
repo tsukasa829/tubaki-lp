@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title or "Portfolio - Personal Website" }}</title>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="/sample/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="/sample/showcase.css">
+    <link href="/sample/aos.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2828f7885a.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="preloader-site">
+    <!-- Begin Preloader -->
+    <div class="preloader-wrapper">
+        <div class="preloader">
+            <img src="/sample/preloader.gif" alt="">
+        </div>
+    </div>
+    <!-- End Preloader-->
+    
+    <!-- Begin Scroll Up Button -->
+    <form action="#home">
+        <button id="toTop" title="Go to top">
+            <i class="fas fa-angle-up"></i>
+        </button>
+    </form>
+    <!-- End Scroll Up Button -->
+
+    <!-- Begin Header -->
+    <div class="header-wrapper" id="home">
+        <!-- Begin Hero -->
+        <section class="hero is-large">
+            <!-- Begin Mobile Nav -->
+            <nav class="navbar is-fixed-top is-transparent is-hidden-desktop">
+                <!-- Begin Burger Menu -->
+                <div class="navbar-brand">
+                    <div class="navbar-burger burger" data-target="mobile-nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <!-- End Burger Menu -->
+                <div id="mobile-nav" class="navbar-menu">
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#home">ホーム</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#about-me">私について</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#services">サービス</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#skills">スキル</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#my-work">作品</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#contact">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Mobile Nav -->
+            
+            <!-- Begin Hero Content-->
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="subtitle">{{ hero.greeting or "こんにちは、私は" }}</h1>
+                    <h2 class="title">{{ hero.name or "山田太郎" }}</h2>
+                    <h1 class="subtitle profession">{{ hero.profession or "UI/UX デザイナー" }}</h1>
+                </div>
+            </div>
+            <!-- End Hero Content-->
+            
+            <!-- Begin Hero Menu -->
+            <div class="hero-foot">
+                <div class="hero-foot--wrapper">
+                    <div class="columns">
+                        <div class="column is-12 hero-menu-desktop has-text-centered is-fixed-top">
+                            <ul>
+                                <li class="is-active">
+                                    <a href="#home">ホーム</a>
+                                </li>
+                                <li>
+                                    <a href="#about-me">私について</a>
+                                </li>
+                                <li>
+                                    <a href="#services">サービス</a>
+                                </li>
+                                <li>
+                                    <a href="#skills">スキル</a>
+                                </li>
+                                <li>
+                                    <a href="#my-work">作品</a>
+                                </li>
+                                <li>
+                                    <a href="#contact">お問い合わせ</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Hero Menu -->
+        </section>
+        <!-- End Hero -->
+    </div>
+    <!-- End Header -->
+
+    <!-- Begin Main Content -->
+    <div class="main-content">
+        {{ content | safe }}
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Begin Footer -->
+    <div class="footer">
+        <p>
+            <strong class="white">Bulma</strong> by <a href="http://jgthms.com/">Jeremy Thomas</a>.
+            The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+    </div>
+    <!-- End Footer -->
+
+    <!-- Scripts -->
+    <script src="/sample/jquery.min.js.ダウンロード"></script>
+    <script src="/sample/showcase.js.ダウンロード"></script>
+    <script src="/sample/aos.js.ダウンロード"></script>
+    <script>
+        AOS.init({
+            easing: "ease-out",
+            duration: 800,
+        });
+    </script>
+</body>
+</html>
