@@ -1,8 +1,7 @@
 ---
-layout: layouts/base.njk
+layout: layouts/tokushoho.njk
 title: 特定商取引法に基づく表記
 permalink: /tokushoho/
-hideHero: true
 ---
 
 # 特定商取引法に基づく表記

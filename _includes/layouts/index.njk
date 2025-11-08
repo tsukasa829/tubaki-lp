@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{{ title or "Portfolio - Personal Website" }}</title>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="/sample/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="/sample/showcase.css">
+    <link href="/sample/aos.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2828f7885a.js" crossorigin="anonymous"></script>
+    <style>
+        /* ダークモードを無効化してライトモードに固定 */
+        :root {
+            color-scheme: light only;
+        }
+        
+        html, body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        
+        /* すべてのテキスト要素を濃い色に固定 */
+        *, *::before, *::after {
+            color: inherit !important;
+        }
+        
+        h1, h2, h3, h4, h5, h6, p, span, div, a, li, label {
+            color: #363636 !important;
+        }
+        
+        .title, .subtitle {
+            color: #363636 !important;
+        }
+        
+        /* ヒーローセクション（1段目）は白文字 */
+        .hero h1, .hero h2, .hero h3, .hero .title, .hero .subtitle {
+            color: #ffffff !important;
+        }
+        
+        /* 初回カウンセリング無料セクションは黒文字 */
+        .section-dark.resume h1, .section-dark.resume h2, .section-dark.resume h3, .section-dark.resume h4, .section-dark.resume h5, .section-dark.resume h6,
+        .section-dark.resume p, .section-dark.resume span, .section-dark.resume div, .section-dark.resume a, .section-dark.resume li,
+        .section-dark.resume .title, .section-dark.resume .subtitle, .section-dark.resume .button {
+            color: #363636 !important;
+        }
+        
+        /* 3段目（サービスセクション）は白文字 */
+        .services h1, .services h2, .services h3, .services h4, .services h5, .services h6,
+        .services p, .services span, .services div, .services a, .services li,
+        .services .title, .services .subtitle {
+            color: #ffffff !important;
+        }
+        
+        /* 背景が暗いセクションでは白文字 */
+        .section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4, .section-dark h5, .section-dark h6,
+        .section-dark p, .section-dark span, .section-dark div, .section-dark a, .section-dark li,
+        .section-dark .title, .section-dark .subtitle {
+            color: #ffffff !important;
+        }
+        
+        /* クライアントの声セクションは黒文字（優先） */
+        .section-dark.my-work h1, .section-dark.my-work h2, .section-dark.my-work h3, .section-dark.my-work h4, .section-dark.my-work h5, .section-dark.my-work h6,
+        .section-dark.my-work p, .section-dark.my-work span, .section-dark.my-work div, .section-dark.my-work a, .section-dark.my-work li,
+        .section-dark.my-work .title, .section-dark.my-work .subtitle {
+            color: #363636 !important;
+        }
+        
+        /* フォーム要素もライトモードに固定 */
+        input, textarea, select, button {
+            background-color: #ffffff !important;
+            color: #363636 !important;
+            border-color: #dbdbdb !important;
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #7a7a7a !important;
+            opacity: 1 !important;
+        }
+        
+        .select select {
+            background-color: #ffffff !important;
+            color: #363636 !important;
+        }
+    </style>
+</head>
+
+<body class="preloader-site">
+    <!-- Begin Preloader -->
+    <div class="preloader-wrapper">
+        <div class="preloader">
+            <img src="/sample/preloader.gif" alt="">
+        </div>
+    </div>
+    <!-- End Preloader-->
+    
+    <!-- Begin Scroll Up Button -->
+    <form action="#home">
+        <button id="toTop" title="Go to top">
+            <i class="fas fa-angle-up"></i>
+        </button>
+    </form>
+    <!-- End Scroll Up Button -->
+
+    <!-- Begin Header -->
+    <div class="header-wrapper" id="home">
+        <!-- Begin Hero -->
+        <section class="hero is-large">
+            <!-- Begin Mobile Nav -->
+            <nav class="navbar is-fixed-top is-transparent is-hidden-desktop">
+                <!-- Begin Burger Menu -->
+                <div class="navbar-brand">
+                    <div class="navbar-burger burger" data-target="mobile-nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <!-- End Burger Menu -->
+                <div id="mobile-nav" class="navbar-menu">
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#home">ホーム</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#about-me">私について</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#services">サービス</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#skills">スキル</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#my-work">作品</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="navbar-item" href="#contact">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Mobile Nav -->
+            
+            <!-- Begin Hero Content-->
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="subtitle">{{ hero.greeting or "こんにちは、私は" }}</h1>
+                    <h2 class="title">{{ hero.name or "山田太郎" }}</h2>
+                    <h1 class="subtitle profession">{{ hero.profession or "UI/UX デザイナー" }}</h1>
+                </div>
+            </div>
+            <!-- End Hero Content-->
+            
+            <!-- Begin Hero Menu -->
+            <div class="hero-foot">
+                <div class="hero-foot--wrapper">
+                    <div class="columns">
+                        <div class="column is-12 hero-menu-desktop has-text-centered is-fixed-top">
+                            <ul>
+                                <li class="is-active">
+                                    <a href="#home">ホーム</a>
+                                </li>
+                                <li>
+                                    <a href="#about-me">私について</a>
+                                </li>
+                                <li>
+                                    <a href="#services">サービス</a>
+                                </li>
+                                <li>
+                                    <a href="#skills">スキル</a>
+                                </li>
+                                <li>
+                                    <a href="#my-work">作品</a>
+                                </li>
+                                <li>
+                                    <a href="#contact">お問い合わせ</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Hero Menu -->
+        </section>
+        <!-- End Hero -->
+    </div>
+    <!-- End Header -->
+
+    <!-- Begin Main Content -->
+    <div class="main-content">
+        <!-- Begin About Me Section -->
+        <div class="section-light about-me" id="about-me">
+            <div class="container">
+                <div class="column is-12 about-me">
+                    <h1 class="title has-text-centered section-title">私について</h1>
+                </div>
+                <div class="columns is-multiline">
+                    <div class="column is-6 has-vertically-aligned-content" data-aos="fade-right">
+                        <p class="is-larger">
+                            <strong>{{ about.lead }}</strong>
+                        </p>
+                        <br>
+                        <p>{{ about.description }}</p>
+                        <br>
+                        <div class="is-divider"></div>
+                        <div class="columns about-links">
+                            <div class="column">
+                                <p class="heading"><strong>ご予約・お問い合わせ</strong></p>
+                                <p class="subheading">{{ about.contact.phone }}</p>
+                            </div>
+                            <div class="column">
+                                <p class="heading"><strong>メール相談</strong></p>
+                                <p class="subheading">{{ about.contact.email }}</p>
+                            </div>
+                            <div class="column">
+                                <p class="heading"><strong>営業時間</strong></p>
+                                <p class="subheading">{{ about.contact.hours }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6 right-image" data-aos="fade-left">
+                        <img class="is-rounded" src="{{ about.image }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End About Me Section -->
+
+        <!-- Begin Resume Section -->
+        <div class="section-dark resume">
+            <div class="container">
+                <div class="columns is-multiline" data-aos="fade-in" data-aos-easing="linear">
+                    <div class="column is-12 about-me">
+                        <h1 class="title has-text-centered section-title">{{ resume.title }}</h1>
+                    </div>
+                    <div class="column is-10 has-text-centered is-offset-1">
+                        <h2 class="subtitle">{{ resume.description }}</h2>
+                        <form action="#contact">
+                            <button class="button">
+                                無料相談を予約する <i class="fad fa-calendar fa-lg"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Resume Section -->
+
+        <!-- Begin Services Section -->
+        <div class="section-color services" id="services">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-12 about-me" data-aos="fade-in" data-aos-easing="linear">
+                        <h1 class="title has-text-centered section-title">{{ services.title }}</h1>
+                        <h2 class="subtitle">{{ services.subtitle }}</h2>
+                        <br>
+                    </div>
+                    <div class="columns is-12">
+                        {% for service in services.items | slice(0, 3) %}
+                        <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
+                            <i class="fas fa-{{ service.icon }} fa-3x"></i>
+                            <hr>
+                            <h2>{{ service.title }}<br>{{ service.description }}</h2>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="columns is-12">
+                        {% for service in services.items | slice(3, 6) %}
+                        <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
+                            <i class="fas fa-{{ service.icon }} fa-3x"></i>
+                            <hr>
+                            <h2>{{ service.title }}<br>{{ service.description }}</h2>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Services Section -->
+
+        <!-- Begin Skills Section -->
+        <div class="section-light skills" id="skills">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-12 about-me">
+                        <h1 class="title has-text-centered section-title">{{ skills.title }}</h1>
+                    </div>
+                    <div class="column is-6" data-aos="fade-in" data-aos-easing="linear">
+                        {% for skill in skills.items | slice(0, 4) %}
+                        <h1>{{ skill.name }}</h1>
+                        <progress class="progress" value="{{ skill.value }}" max="100">{{ skill.value }}%</progress>
+                        {% endfor %}
+                    </div>
+                    <div class="column is-6" data-aos="fade-in" data-aos-easing="linear">
+                        {% for skill in skills.items | slice(4, 8) %}
+                        <h1>{{ skill.name }}</h1>
+                        <progress class="progress" value="{{ skill.value }}" max="100">{{ skill.value }}%</progress>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Skills Section -->
+
+        <!-- Begin Testimonials Section -->
+        <div class="section-dark my-work" id="my-work">
+            <div class="container">
+                <div class="columns is-multiline" data-aos="fade-in" data-aos-easing="linear">
+                    <div class="column is-12">
+                        <h1 class="title has-text-centered section-title">{{ testimonials.title }}</h1>
+                    </div>
+                    {% for item in testimonials.items %}
+                    <div class="column is-3">
+                        <a href="#">
+                            <figure class="image is-2by1 work-item" style="background-image: url('{{ item.image }}');"></figure>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- End Testimonials Section -->
+
+        <!-- Begin Contact Section -->
+        <div class="section-light contact" id="contact">
+            <div class="container">
+                <div class="columns is-multiline" data-aos="fade-in-up" data-aos-easing="linear">
+                    <div class="column is-12 about-me">
+                        <h1 class="title has-text-centered section-title">{{ contact.title }}</h1>
+                    </div>
+                    <div class="column is-8 is-offset-2">
+                        <form action="{{ contact.action }}" method="POST">
+                            <div class="field">
+                                <label class="label">お名前</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" type="text" placeholder="例: 山田花子" name="Name" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">メールアドレス</label>
+                                <div class="control has-icons-left">
+                                    <input class="input" type="email" placeholder="例: hanako@example.com" name="Email" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">ご希望のカウンセリング</label>
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select name="Service">
+                                            {% for service in contact.services %}
+                                            <option>{{ service }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">ご相談内容・ご質問</label>
+                                <div class="control">
+                                    <textarea class="textarea" placeholder="差し支えない範囲で、ご相談内容やご質問をお書きください。秘密は厳守いたします。" name="Message" rows="6" required></textarea>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button submit-button">
+                                        送信する&nbsp;&nbsp;
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="has-text-centered" style="margin-top: 2rem;">
+                    <p><a href="/tokushoho/" style="text-decoration: underline;">特定商取引法に基づく表記</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact Section -->
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Begin Footer -->
+    <div class="footer">
+        <p>
+            <strong class="white">Bulma</strong> by <a href="http://jgthms.com/">Jeremy Thomas</a>.
+            The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+    </div>
+    <!-- End Footer -->
+
+    <!-- Scripts -->
+    <script src="/sample/jquery.min.js.ダウンロード"></script>
+    <script src="/sample/showcase.js.ダウンロード"></script>
+    <script src="/sample/aos.js.ダウンロード"></script>
+    <script>
+        AOS.init({
+            easing: "ease-out",
+            duration: 800,
+        });
+    </script>
+</body>
+</html>
