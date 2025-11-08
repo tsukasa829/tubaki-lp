@@ -308,6 +308,9 @@ hero:
                 </form>
             </div>
         </div>
+        <div class="has-text-centered" style="margin-top: 2rem;">
+            <p><a href="/tokushoho/" style="text-decoration: underline;">特定商取引法に基づく表記</a></p>
+        </div>
     </div>
 </div>
 <!-- End Contact Content -->
