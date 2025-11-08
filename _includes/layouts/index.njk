@@ -6,15 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>{{ title or "Portfolio - Personal Website" }}</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="/sample/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/sample/showcase.css">
     <link href="/sample/aos.css" rel="stylesheet">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="/assets/css/common.css">
     <script src="https://kit.fontawesome.com/2828f7885a.js" crossorigin="anonymous"></script>
     <style>
-        /* ダークモードを無効化してライトモードに固定 */
+        /* ページ全体がライトモードのみをサポートすることをブラウザに伝える */
         :root {
-            color-scheme: light only;
+            color-scheme: light;
+        }
+        
+        html {
+            color-scheme: light;
         }
         
         html, body {
@@ -84,6 +94,50 @@
             background-color: #ffffff !important;
             color: #363636 !important;
         }
+        
+        /* サービスセクションの背景をグラデーション紫に */
+        .section-color.services {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
+        
+        /* サービスカードのスタイル */
+        .services .card {
+            background-color: white !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .services .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* カード内のテキストは黒に */
+        .services .card .title,
+        .services .card .subtitle,
+        .services .card p,
+        .services .card .content {
+            color: #363636 !important;
+        }
+        
+        /* プライマリーカラーのテキストは紫に */
+        .services .card .has-text-primary {
+            color: #667eea !important;
+        }
+        
+        /* クライアントの声のカードスタイル */
+        .my-work .card {
+            background-color: white !important;
+        }
+        
+        .my-work .card .content,
+        .my-work .card p {
+            color: #363636 !important;
+        }
+        
+        .my-work .card .has-text-primary {
+            color: #667eea !important;
+        }
     </style>
 </head>
 
@@ -131,10 +185,7 @@
                             <a class="navbar-item" href="#services">サービス</a>
                         </div>
                         <div class="navbar-item">
-                            <a class="navbar-item" href="#skills">スキル</a>
-                        </div>
-                        <div class="navbar-item">
-                            <a class="navbar-item" href="#my-work">作品</a>
+                            <a class="navbar-item" href="#my-work">お客様の声</a>
                         </div>
                         <div class="navbar-item">
                             <a class="navbar-item" href="#contact">お問い合わせ</a>
@@ -147,9 +198,7 @@
             <!-- Begin Hero Content-->
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <h1 class="subtitle">{{ hero.greeting or "こんにちは、私は" }}</h1>
-                    <h2 class="title">{{ hero.name or "山田太郎" }}</h2>
-                    <h1 class="subtitle profession">{{ hero.profession or "UI/UX デザイナー" }}</h1>
+                    <h2 class="title" style="transform: none !important; font-size: 70% !important;">{{ hero.name or "つばきカウンセリングサービス" }}</h2>
                 </div>
             </div>
             <!-- End Hero Content-->
@@ -170,10 +219,7 @@
                                     <a href="#services">サービス</a>
                                 </li>
                                 <li>
-                                    <a href="#skills">スキル</a>
-                                </li>
-                                <li>
-                                    <a href="#my-work">作品</a>
+                                    <a href="#my-work">お客様の声</a>
                                 </li>
                                 <li>
                                     <a href="#contact">お問い合わせ</a>
@@ -258,22 +304,32 @@
                         <h2 class="subtitle">{{ services.subtitle }}</h2>
                         <br>
                     </div>
-                    <div class="columns is-12">
-                        {% for service in services.items | slice(0, 3) %}
-                        <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                            <i class="fas fa-{{ service.icon }} fa-3x"></i>
-                            <hr>
-                            <h2>{{ service.title }}<br>{{ service.description }}</h2>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <hr>
-                    <div class="columns is-12">
-                        {% for service in services.items | slice(3, 6) %}
-                        <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                            <i class="fas fa-{{ service.icon }} fa-3x"></i>
-                            <hr>
-                            <h2>{{ service.title }}<br>{{ service.description }}</h2>
+                    <div class="columns is-multiline">
+                        {% for service in services.items %}
+                        <div class="column is-4" data-aos="fade-in" data-aos-easing="linear">
+                            {% if service.link %}
+                            <a href="{{ service.link }}" style="text-decoration: none;">
+                            {% endif %}
+                                <div class="card">
+                                    <div class="card-content has-text-centered">
+                                        <div class="content">
+                                            <span class="icon is-large has-text-primary">
+                                                <i class="fas fa-{{ service.icon }} fa-3x"></i>
+                                            </span>
+                                            <h3 class="title is-4 mt-4">{{ service.title }}</h3>
+                                            {% if service.price %}
+                                            <p class="subtitle is-5 has-text-weight-bold has-text-primary">{{ service.price }}</p>
+                                            {% endif %}
+                                            {% if service.duration %}
+                                            <p class="is-size-7 has-text-grey">{{ service.duration }}</p>
+                                            {% endif %}
+                                            <p class="mt-3">{{ service.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% if service.link %}
+                            </a>
+                            {% endif %}
                         </div>
                         {% endfor %}
                     </div>
@@ -282,44 +338,28 @@
         </div>
         <!-- End Services Section -->
 
-        <!-- Begin Skills Section -->
-        <div class="section-light skills" id="skills">
-            <div class="container">
-                <div class="columns is-multiline">
-                    <div class="column is-12 about-me">
-                        <h1 class="title has-text-centered section-title">{{ skills.title }}</h1>
-                    </div>
-                    <div class="column is-6" data-aos="fade-in" data-aos-easing="linear">
-                        {% for skill in skills.items | slice(0, 4) %}
-                        <h1>{{ skill.name }}</h1>
-                        <progress class="progress" value="{{ skill.value }}" max="100">{{ skill.value }}%</progress>
-                        {% endfor %}
-                    </div>
-                    <div class="column is-6" data-aos="fade-in" data-aos-easing="linear">
-                        {% for skill in skills.items | slice(4, 8) %}
-                        <h1>{{ skill.name }}</h1>
-                        <progress class="progress" value="{{ skill.value }}" max="100">{{ skill.value }}%</progress>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Skills Section -->
-
         <!-- Begin Testimonials Section -->
-        <div class="section-dark my-work" id="my-work">
+        <div class="section-light my-work" id="my-work">
             <div class="container">
                 <div class="columns is-multiline" data-aos="fade-in" data-aos-easing="linear">
                     <div class="column is-12">
-                        <h1 class="title has-text-centered section-title">{{ testimonials.title }}</h1>
+                        <h1 class="title has-text-centered section-title mb-6">{{ testimonials.title }}</h1>
                     </div>
-                    {% for item in testimonials.items %}
-                    <div class="column is-3">
-                        <a href="#">
-                            <figure class="image is-2by1 work-item" style="background-image: url('{{ item.image }}');"></figure>
-                        </a>
+                    <div class="columns is-multiline">
+                        {% for item in testimonials.items %}
+                        <div class="column is-4" data-aos="fade-in" data-aos-easing="linear">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p class="has-text-weight-bold has-text-primary mb-3">{{ item.profile }}</p>
+                                        <p class="mb-4">"{{ item.comment }}"</p>
+                                        <p class="has-text-right has-text-grey">{{ item.name }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -393,9 +433,7 @@
     <!-- Begin Footer -->
     <div class="footer">
         <p>
-            <strong class="white">Bulma</strong> by <a href="http://jgthms.com/">Jeremy Thomas</a>.
-            The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            <strong class="white">つばきカウンセリングサービス</strong>
         </p>
     </div>
     <!-- End Footer -->

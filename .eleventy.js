@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
   // 静的ファイルのコピー
   eleventyConfig.addPassthroughCopy({"sample": "sample"});
+  eleventyConfig.addPassthroughCopy({"assets": "assets"});
   
   // Showcaseファイルは別URLで保持
   eleventyConfig.addPassthroughCopy({

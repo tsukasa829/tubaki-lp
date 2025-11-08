@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/sample/bulma.min.css">
+  <link rel="stylesheet" href="/sample/showcase.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+  <!-- Common CSS -->
+  <link rel="stylesheet" href="/assets/css/common.css">
+  <style>
+    /* ページ全体がライトモードのみをサポートすることをブラウザに伝える */
+    :root {
+      color-scheme: light;
+    }
+    
+    html {
+      color-scheme: light;
+    }
+    
+    /* 全体を淡い紫のグラデーション背景に */
+    body {
+      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #f5f3ff 100%) !important;
+      min-height: 100vh;
+    }
+    
+    /* ナビゲーションバーを紫に */
+    .navbar {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+    }
+    
+    .navbar-item, .navbar-link {
+      color: white !important;
+    }
+    
+    .navbar-item:hover {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    /* セクション背景を透過 */
+    .section {
+      background-color: transparent !important;
+    }
+    
+    /* ボックスとカードを白背景・黒文字に */
+    .box, .card {
+      background-color: white !important;
+      color: #363636 !important;
+      box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1) !important;
+    }
+    
+    .box .title, .card .title,
+    .box p, .card p,
+    .box .content, .card .content {
+      color: #363636 !important;
+    }
+    
+    /* タイトルを紫に */
+    .title.is-1, .title.is-2 {
+      color: #667eea !important;
+    }
+    
+    /* 背景が明るいセクション */
+    .has-background-light {
+      background-color: rgba(255, 255, 255, 0.5) !important;
+    }
+    
+    /* プライマリーカラーのテキストを紫に */
+    .has-text-primary {
+      color: #667eea !important;
+    }
+    
+    /* チェックアイコンを紫に */
+    .has-text-primary i {
+      color: #667eea !important;
+    }
+    
+    .has-text-success i {
+      color: #667eea !important;
+    }
+    
+    /* タグを淡い紫背景に */
+    .tag.is-primary.is-light {
+      background-color: #ede9fe !important;
+      color: #667eea !important;
+      border: 1px solid #c4b5fd !important;
+    }
+    
+    /* ボタンを淡い紫に */
+    .button.is-primary {
+      background-color: #ede9fe !important;
+      color: #667eea !important;
+      border: 2px solid #c4b5fd !important;
+      font-weight: bold !important;
+    }
+    
+    .button.is-primary:hover {
+      background-color: #ddd6fe !important;
+      border-color: #a78bfa !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <strong>つばきカウンセリング</strong>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="/">ホーム</a>
+          <a class="navbar-item" href="/#services">サービス</a>
+          <a class="navbar-item" href="/#contact">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="section pt-6 pb-3">
+    <div class="container">
+      <div class="has-text-centered">
+        <h1 class="title is-1 mb-3">{{ service.name }}</h1>
+        <p class="subtitle is-4 mb-4">{{ service.lead }}</p>
+        <div class="tags is-centered is-large">
+          <span class="tag is-primary is-light is-large">{{ service.price }}</span>
+          {% if service.duration %}
+          <span class="tag is-primary is-light is-large">{{ service.duration }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Description -->
+  <section class="section pt-3 pb-5">
+    <div class="container">
+      <div class="box">
+        <div class="content is-medium">
+          <p class="is-size-5">{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section has-background-light">
+    <div class="container">
+      <h2 class="title is-2 has-text-centered mb-6">サービスの特徴</h2>
+      <div class="columns is-multiline">
+        {% for feature in service.features %}
+        <div class="column is-half">
+          <div class="box">
+            <h3 class="title is-4">{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-2 has-text-centered mb-6">ご利用の流れ</h2>
+      <div class="columns is-multiline">
+        {% for item in service.process %}
+        <div class="column is-full">
+          <div class="box">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-primary">
+                  <i class="fas fa-check-circle fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <h3 class="title is-5">{{ loop.index }}. {{ item.step }}</h3>
+                <p>{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Suitable For -->
+  <section class="section has-background-light">
+    <div class="container">
+      <h2 class="title is-2 has-text-centered mb-6">こんな方におすすめ</h2>
+      <div class="box">
+        <div class="content is-medium">
+          <ul>
+            {% for item in service.suitable %}
+            <li class="is-size-5">{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits (if exists) -->
+  {% if service.benefits %}
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-2 has-text-centered mb-6">期待できる効果</h2>
+      <div class="columns is-multiline">
+        {% for benefit in service.benefits %}
+        <div class="column is-half">
+          <div class="box">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon has-text-primary">
+                  <i class="fas fa-star"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p>{{ benefit }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Deliverables (if exists) -->
+  {% if service.deliverables %}
+  <section class="section has-background-light">
+    <div class="container">
+      <h2 class="title is-2 has-text-centered mb-6">提供内容</h2>
+      <div class="box">
+        <div class="content is-medium">
+          <ul>
+            {% for item in service.deliverables %}
+            <li class="is-size-5">{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- CTA -->
+  <section class="section pb-6">
+    <div class="container has-text-centered">
+      <div class="box">
+        <h2 class="title is-3 mb-5">{{ service.contact.cta }}</h2>
+        <a href="/#contact" class="button is-primary is-large">
+          <span class="icon">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span>お問い合わせフォームへ</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="background: #667eea !important;">
+    <div class="content has-text-centered" style="color: white !important;">
+      <p style="color: white !important;">
+        <strong style="color: white !important;">つばきカウンセリングサービス</strong>
+      </p>
+      <p>
+        <a href="/" style="color: white !important;">ホーム</a> | 
+        <a href="/tokushoho/" style="color: white !important;">特定商取引法に基づく表記</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

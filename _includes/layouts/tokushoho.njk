@@ -6,15 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>{{ title or "Portfolio - Personal Website" }}</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="/sample/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/sample/showcase.css">
     <link href="/sample/aos.css" rel="stylesheet">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="/assets/css/common.css">
     <script src="https://kit.fontawesome.com/2828f7885a.js" crossorigin="anonymous"></script>
     <style>
-        /* ダークモードを無効化してライトモードに固定 */
+        /* ページ全体がライトモードのみをサポートすることをブラウザに伝える */
         :root {
-            color-scheme: light only;
+            color-scheme: light;
+        }
+        
+        html {
+            color-scheme: light;
         }
         
         html, body {
