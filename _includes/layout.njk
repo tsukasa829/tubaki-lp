@@ -10,6 +10,148 @@
     <link rel="stylesheet" type="text/css" href="/sample/showcase.css">
     <link href="/sample/aos.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/2828f7885a.js" crossorigin="anonymous"></script>
+    <style>
+        /* ダークモードを無効化してライトモードに固定 */
+        :root {
+            color-scheme: light only;
+        }
+        
+        html, body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        
+        /* すべてのテキスト要素を濃い色に固定 */
+        *, *::before, *::after {
+            color: inherit !important;
+        }
+        
+        h1, h2, h3, h4, h5, h6, p, span, div, a, li, label {
+            color: #363636 !important;
+        }
+        
+        .title, .subtitle {
+            color: #363636 !important;
+        }
+        
+        /* ヒーローセクション（1段目）は白文字 */
+        .hero h1, .hero h2, .hero h3, .hero .title, .hero .subtitle {
+            color: #ffffff !important;
+        }
+        
+        /* 初回カウンセリング無料セクションは黒文字 */
+        .section-dark.resume h1, .section-dark.resume h2, .section-dark.resume h3, .section-dark.resume h4, .section-dark.resume h5, .section-dark.resume h6,
+        .section-dark.resume p, .section-dark.resume span, .section-dark.resume div, .section-dark.resume a, .section-dark.resume li,
+        .section-dark.resume .title, .section-dark.resume .subtitle, .section-dark.resume .button {
+            color: #363636 !important;
+        }
+        
+        /* 3段目（サービスセクション）は白文字 */
+        .services h1, .services h2, .services h3, .services h4, .services h5, .services h6,
+        .services p, .services span, .services div, .services a, .services li,
+        .services .title, .services .subtitle {
+            color: #ffffff !important;
+        }
+        
+        /* 背景が暗いセクションでは白文字 */
+        .section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4, .section-dark h5, .section-dark h6,
+        .section-dark p, .section-dark span, .section-dark div, .section-dark a, .section-dark li,
+        .section-dark .title, .section-dark .subtitle {
+            color: #ffffff !important;
+        }
+        
+        /* クライアントの声セクションは黒文字（優先） */
+        .section-dark.my-work h1, .section-dark.my-work h2, .section-dark.my-work h3, .section-dark.my-work h4, .section-dark.my-work h5, .section-dark.my-work h6,
+        .section-dark.my-work p, .section-dark.my-work span, .section-dark.my-work div, .section-dark.my-work a, .section-dark.my-work li,
+        .section-dark.my-work .title, .section-dark.my-work .subtitle {
+            color: #363636 !important;
+        }
+        
+        /* フォーム要素もライトモードに固定 */
+        input, textarea, select, button {
+            background-color: #ffffff !important;
+            color: #363636 !important;
+            border-color: #dbdbdb !important;
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #7a7a7a !important;
+            opacity: 1 !important;
+        }
+        
+        .select select {
+            background-color: #ffffff !important;
+            color: #363636 !important;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            html, body {
+                background-color: #ffffff !important;
+                color: #363636 !important;
+            }
+            
+            *, *::before, *::after {
+                color: inherit !important;
+            }
+            
+            h1, h2, h3, h4, h5, h6, p, span, div, a, li, label {
+                color: #363636 !important;
+            }
+            
+            .title, .subtitle {
+                color: #363636 !important;
+            }
+            
+            /* ヒーローセクション（1段目）は白文字 */
+            .hero h1, .hero h2, .hero h3, .hero .title, .hero .subtitle {
+                color: #ffffff !important;
+            }
+            
+            /* 初回カウンセリング無料セクションは黒文字 */
+            .section-dark.resume h1, .section-dark.resume h2, .section-dark.resume h3, .section-dark.resume h4, .section-dark.resume h5, .section-dark.resume h6,
+            .section-dark.resume p, .section-dark.resume span, .section-dark.resume div, .section-dark.resume a, .section-dark.resume li,
+            .section-dark.resume .title, .section-dark.resume .subtitle, .section-dark.resume .button {
+                color: #363636 !important;
+            }
+            
+            /* サービスセクションは白文字 */
+            .services h1, .services h2, .services h3, .services h4, .services h5, .services h6,
+            .services p, .services span, .services div, .services a, .services li,
+            .services .title, .services .subtitle {
+                color: #ffffff !important;
+            }
+            
+            /* 背景が暗いセクションでは白文字 */
+            .section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4, .section-dark h5, .section-dark h6,
+            .section-dark p, .section-dark span, .section-dark div, .section-dark a, .section-dark li,
+            .section-dark .title, .section-dark .subtitle {
+                color: #ffffff !important;
+            }
+            
+            /* クライアントの声セクションは黒文字（優先） */
+            .section-dark.my-work h1, .section-dark.my-work h2, .section-dark.my-work h3, .section-dark.my-work h4, .section-dark.my-work h5, .section-dark.my-work h6,
+            .section-dark.my-work p, .section-dark.my-work span, .section-dark.my-work div, .section-dark.my-work a, .section-dark.my-work li,
+            .section-dark.my-work .title, .section-dark.my-work .subtitle {
+                color: #363636 !important;
+            }
+            
+            input, textarea, select, button {
+                background-color: #ffffff !important;
+                color: #363636 !important;
+                border-color: #dbdbdb !important;
+            }
+            
+            input::placeholder, textarea::placeholder {
+                color: #7a7a7a !important;
+                opacity: 1 !important;
+            }
+            
+            .select select {
+                background-color: #ffffff !important;
+                color: #363636 !important;
+            }
+        }
+    </style>
 </head>
 
 <body class="preloader-site">
