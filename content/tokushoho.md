@@ -19,7 +19,7 @@ permalink: /tokushoho/
 080-7003-8773（受付時間：平日 10:00～18:00）
 
 ## メールアドレス
-unk_sniper@outlook.jp
+support@tubaki-mental-trainer.jp
 
 ## 販売価格
 各サービスページに記載の通り（税込表示）

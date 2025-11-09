@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>{{ title or "Portfolio - Personal Website" }}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -373,7 +375,11 @@
                         <h1 class="title has-text-centered section-title">{{ contact.title }}</h1>
                     </div>
                     <div class="column is-8 is-offset-2">
-                        <form action="{{ contact.action }}" method="POST">
+                        <div id="form-success-alert" class="notification is-light" style="display: none; background-color: #f5f3ff; border: 1px solid #d4c5f9; color: #667eea;">
+                            <button class="delete" onclick="document.getElementById('form-success-alert').style.display='none'"></button>
+                            お問い合わせありがとうございます。内容を確認次第、ご連絡いたします。
+                        </div>
+                        <form id="contact-form" action="{{ contact.action }}" method="POST">
                             <div class="field">
                                 <label class="label">お名前</label>
                                 <div class="control has-icons-left">
@@ -446,6 +452,17 @@
         AOS.init({
             easing: "ease-out",
             duration: 800,
+        });
+
+        // フォーム送信処理
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // フォームをリセット
+            this.reset();
+            
+            // アラートを表示
+            document.getElementById('form-success-alert').style.display = 'block';
         });
     </script>
 </body>
