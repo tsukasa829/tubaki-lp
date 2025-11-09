@@ -1,6 +1,6 @@
 /* 共通CSS - 全ページで適用 */
 
 /* フォントをKlee Oneに統一 */
-body, h1, h2, h3, h4, h5, h6, p, span, div, a, li, label, input, textarea, select, button, .title, .subtitle {
+body, h1, h2, h3, h4, h5, h6, p, span, div, a, li, label, input, textarea, select, button, strong, .title, .subtitle {
   font-family: "Klee One", cursive !important;
 }
