@@ -7,10 +7,10 @@ about:
   lead: "心の悩みを一人で抱えていませんか？あなたの気持ちに寄り添い、共に歩んでいきます。"
   description: "私はカウンセラーとして10年以上の経験を持ち、これまで多くの方々の心のケアをサポートしてきました。仕事のストレス、人間関係の悩み、将来への不安など、どんな些細なことでも安心してお話しください。あなたのペースで、ゆっくりと心を解きほぐしていきましょう。"
   contact:
-    phone: "080-1234-5678"
-    email: "tsubaki@counseling.jp"
+    phone: "080-7003-8773"
+    email: "support@tubaki-mental-trainer.jp"
     hours: "平日 10:00-20:00"
-  image: "/sample/366-600x375.jpg"
+  image: "/assets/images/about.jpeg"
 resume:
   title: "初回カウンセリング無料"
   description: "初めての方でも安心してご相談いただけるよう、初回カウンセリング（60分）を無料で実施しています。まずはお気軽にお問い合わせください。"
